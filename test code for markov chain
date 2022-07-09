@@ -1,0 +1,24 @@
+import numpy as np
+state = {
+  0 : "very-hard",
+  1 : "hard",
+  2 : "easy",
+  3 : "very-easy"
+} 
+
+A = np.array([[0.3, 0.4, 0.2, 0.1],[0.4, 0.3, 0.2, 0.1],[0.45, 0.3, 0.2, 0.05],[0.475, 0.3, 0.2, 0.025]])
+n = int(input("how many study sessions will you have?"))
+sessions = []
+
+start_state = np.random.choice([0, 1, 2, 3])
+print(state[start_state], "--->", end=" ")
+prev_state = start_state
+
+while n-1:
+  curr_state = np.random.choice([0, 1, 2, 3], p = A[prev_state])
+  print(state[curr_state], "--->", end=" ")
+  prev_state = curr_state
+  n-=1
+  sessions.append(state[curr_state])
+print("stop")
+print(sessions)
